@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="no-js oldie ie8" lang="en">
+<![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js oldie ie9" lang="en">
+<![endif]-->
+
+<html lang="en">
+<head>
+
+
+    <!---basic page needs-->
+    <meta charset="utf-8">
+    <title>Online Grievance Management System</title>
+    <!-- mobile specific metas-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/listStyle.css')}}">
+
+
+    <!-- favicons-->
+    <link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+</head>
+
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <a class="navbar-brand" href="#" title="explore to know well about us">
+            <img
+                    class="d-inline-block"
+                    src="{{ url_for('static', filename='images/logot.jpg') }}"
+                    alt="Logo"
+                    style="width: 50px;"
+            />
+            <h1 class="d-inline-block">
+                <span class="header_1stletter">OGMS</span>
+            </h1></a
+        >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-danger" href="/">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/logout">LOGOUT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="feature-grievances">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <span class="anchor" id="formUserEdit"></span>
+                    <hr class="my-5 ">
+
+                    <!-- form user info -->
+                    <div class="card card-outline-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0">Add grievances</h3>
+                        </div>
+                        <div class="card-body">
+                            {% block content %}
+                            {% for message in get_flashed_messages() %}
+                            <div class="alert alert-warning" style="text-align:center;">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% block page_content %}{% endblock %}
+                            {% endblock %}
+                            <form autocomplete="off" class="form" role="form" method="POST"
+                                  action="{{ url_for('.addGrievances') }}">
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label form-control-label">Category</label>
+                                    <div class="col-lg-8">
+                                        <select class="form-control" id="category" size="0" name="Category">
+                                            <option selected="selected" value="Individual">
+                                                Individual
+                                            </option>
+                                            <option value="Group">
+                                                Group
+                                            </option>
+                                            <option value="Union">Union
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label form-control-label">Status</label>
+                                    <div class="col-lg-8">
+                                        <select class="form-control" id="status" size="0" name="Status" disabled>
+                                            <option selected="selected" value="open">
+                                                Open
+                                            </option>
+                                            <option value="Group">
+                                                Closed
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label form-control-label">Description</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" type="text" value="" name="Description"
+                                               placeholder="Describe your query here">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label form-control-label"></label>
+                                    <div class="col-lg-8">
+                                        <button class="btn btn-dark" type="submit" name="postAction" value="cancel">
+                                            Cancel
+                                        </button>
+                                        <button class="btn btn-info" type="submit" name="postAction" value="submit">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- /form user info -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script src="{{url_for('static',filename='js/main.js')}}"></script>
+</body>
+</html>
+

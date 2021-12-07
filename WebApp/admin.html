@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="no-js oldie ie8" lang="en">
+<![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js oldie ie9" lang="en">
+<![endif]-->
+
+<html lang="en">
+<head>
+
+
+    <!---basic page needs-->
+    <meta charset="utf-8">
+    <title>Online Grievance Management System</title>
+    <!-- mobile specific metas-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/listStyle.css')}}">
+
+    <!--script-->
+    <script type="text/javascript">data = {{data | safe}}</script>
+
+    <!-- favicons-->
+    <link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+</head>
+
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <a class="navbar-brand" href="#" title="explore to know well about us">
+            <img
+                    class="d-inline-block"
+                    src="{{ url_for('static', filename='images/logot.jpg') }}"
+                    alt="Logo"
+                    style="width: 50px;"
+            />
+            <h1 class="d-inline-block">
+                <span class="header_1stletter">OGMS</span>
+            </h1></a
+        >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white text-danger admin-shop" href="/admin">GRIEVANCES
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white user-statistic" href="">USERS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/logout">LOGOUT</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <section class="feature-grievances">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center feature-title">
+                    <h2 class="text-uppercase">Admin</h2>
+                   <hr>
+                    {% block content %}
+                    {% for message in get_flashed_messages() %}
+                    <div class="alert alert-warning" style="text-align:center;">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% block page_content %}{% endblock %}
+                    {% endblock %}
+                    <div class="categories center-listing">
+                        <div class="category-listing-navigation-pills" id="category-listing-navigation-pills">
+
+                        </div>
+                    </div>
+                </div>
+<div class="col-md-12 text-center ">
+                   <div class="container table-responsive py-5">
+                       <table class="table table-bordered table-hover">
+                           <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Grievance No</th>
+					            <th scope="col">Grievance Details</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Status</th>
+					            <th scope="col">Raised By</th>
+					            <th scope="col">Edit</th>
+                            </tr></thead>
+                           <tbody id="grievances" ></tbody>
+                       </table>
+                   </div>
+               </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script src="{{url_for('static',filename='js/main.js')}}"></script>
+</body>
+</html>
+

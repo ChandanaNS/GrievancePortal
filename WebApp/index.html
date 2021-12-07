@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="no-js oldie ie8" lang="en">
+<![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js oldie ie9" lang="en">
+<![endif]-->
+
+<html lang="en">
+<head>
+
+
+    <!---basic page needs-->
+    <meta charset="utf-8">
+    <title>Online Grievance Management System</title>
+    <!-- mobile specific metas-->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+
+    <!--CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet">
+
+
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
+
+    <!--script-->
+    <script type="text/javascript">data = {{data | safe}}</script>
+
+    <!-- favicons-->
+    <link href="{{url_for('static',filename='favicon.ico')}}" rel="shortcut icon" type="image/x-icon">
+    <link href="{{url_for('static',filename='favicon.ico')}}" rel="icon" type="image/x-icon">
+</head>
+
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <a class="navbar-brand" href="#" title="explore to know well about us">
+            <img
+                    alt="Logo"
+                    class="d-inline-block"
+                    src="{{ url_for('static', filename='images/logot.jpg') }}"
+                    style="width: 50px;"
+            />
+            <h3 class="d-inline-block">
+                <span class="header_1stletter">Online Grievance Management System</span>
+            </h3></a
+        >
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="/">HOME <span class="sr-only">(current)</span></a>
+                </li>
+
+                {% if data['logged_in'] == "true" %}
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/list">GRIEVANCE</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">CONTACT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bold" href="/logout">LOGOUT</a>
+                </li>
+
+                {% elif data['superAdmin'] == "true" %}
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/admin">GRIEVANCE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#contact">CONTACT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bold" href="/logout">LOGOUT</a>
+                </li>
+                {% else %}
+
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#contact">CONTACT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bold" href="/login">LOGIN / SIGNUP</a>
+                </li>
+
+                {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="jumbotron text-left text-white" id="header">
+        <div class="container p-5 ">
+            <h1 class="display-4 ">Register your issues!</h1>
+            <p class="lead">One platform for all.</p>
+            <hr class="my-5">
+            <p>Speak up</p>
+            <a class="btn btn-primary btn-lg " href="#" role="button ">Learn more</a>
+
+        </div>
+
+    </section>
+
+    <!--how_it_works start-->
+    <div class="w-100">
+        <div class="row text-center how_it_works_parent">
+            <div class="col-12 how_it_works"></div>
+            <div class="col-12">
+                <h1 class="display-4 how_it_works_para">
+                    How it works!
+                </h1>
+                <hr/>
+            </div>
+
+            <div class="col-12 how_it_works_para text-justify">
+                <p class="lead">
+                    A university addresses the problems of its students using an online grievance management portal. The
+                    portal allows admitted students of the university to register online grievance using an online form,
+                    which includes a drop down list “Subject” (as you can find in email software).
+                </p>
+            </div>
+
+            <div class="col-12 how_it_works_para text-justify">
+                <p class="lead">
+                    The “Subject” drop
+                    down list should be generated using a database. The grievances based on the “Subject” are forwarded
+                    to concerned officers, whose list is also a part of the system.
+                </p>
+            </div>
+
+            <div class="col-12 how_it_works_para text-justify">
+                <p class="lead">
+                  The portal keeps track of the date
+                    of forwarding the mail to different person. A delay of more than 2 days in answering the grievance
+                    is reported.
+                </p>
+            </div>
+            <div class="col-12 how_it_works_para text-justify">
+                <p class="lead">
+                   In addition, the system keeps track of the types of grievances; how many grievances are
+                    received, resolved and pending etc. Study various requirements for such a system.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer pt-50">
+        <div class="container  ">
+            <div class="container pb-35">
+                <div class="row  ">
+                    <!-- footer about start -->
+                    <div class="col-md-6 col-sm-12 col-xs-12" id="about">
+                        <h3 class="text-uppercase ">About Us</h3>
+                        <p class=" text-justify">It is an online Grievance site that allows users to report.<br/>
+                            <br/>
+                        <h6>Project By</h6>
+                        Name</p>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12" id="contact">
+                        <h3 class=" text-uppercase ">Contact Us</h3>
+                        <span class="icon-envelope el-icon2x"> </span>
+
+                        <p class=" ">OGMS.college@gmail.com</p>
+                    </div>
+                    <!-- footer about end -->
+
+                    <!-- footer social icons start -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <h3 class=" text-uppercase ">Social Media</h3>
+                        <div class="social social-two">
+                            <a href="http://twitter.com/helloOGMS" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="http://www.facebook.com/OGMS" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="http://www.linkedin.com/company/OGMS" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <!-- footer social icons end -->
+
+                </div><!-- row end -->
+            </div><!-- container end -->
+        </div><!-- container end -->
+
+        <div class="container pt20">
+            <div class="container">
+                <div class="row">
+
+                    <!-- copyright start -->
+                    <div class="col-md-6 col-sm-6 col-xs-6 pull-left">
+                        <p>Copyright ©2021 <a href="/">OGMS</a>. All rights reserved.</p>
+                    </div>
+                    <!-- copyright end -->
+
+                    <!-- footer bottom start -->
+                    <div class="col-md-6 col-sm-6 col-xs-6 pull-right">
+                        <p class=" text-right">
+                            <a class="mr20" href="#">Privacy Policy</a>
+                            <a class="mr20" href="#">Terms and Condition</a>
+                        </p>
+                    </div>
+                    <!-- footer bottom end -->
+
+                </div><!-- row end -->
+            </div><!-- container end -->
+        </div><!-- container end -->
+
+        <div class="footer-bottom">
+            <div class="row">
+                <div id="go-top">
+                    <a class="smoothscroll" href="#top" title="Back to Top"><i class="icon icon-arrow-up"></i></a>
+                </div>
+            </div>
+        </div> <!--end footer-bottom -->
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</body>
+</html>

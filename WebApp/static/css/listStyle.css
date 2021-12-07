@@ -1,0 +1,154 @@
+<style>:root {
+	--main-color: #f368e0;
+}
+
+.feature-grievances {
+	background-color: #F3F3F3;
+	font-family: Roboto;
+	position: relative;
+}
+
+.feature-grievances::before {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	height: 50px;
+	content: "";
+	display: block;
+	width: 3px;
+	background-color: #000;
+	z-index: 1;
+}
+
+
+.feature-title {
+	font-weight: 600;
+	color: #000;
+}
+
+.feature-title h2 {
+	margin-top: 60px;
+	margin-bottom: 20px;
+	font-family: Roboto;
+	font-size: 38px;
+	letter-spacing: 1px;
+	font-weight: 700;
+}
+
+.feature-title a {
+	padding: 0 20px;
+	font-size: 16px;
+	color: #bbb;
+}
+
+.feature-active {
+	color: #000 !important;
+	font-weight: 700;
+}
+
+
+
+.description {
+	display: inline-block;
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+	/* margin-bottom:40px;*/
+}
+
+
+/*animated for add to cart button starts*/
+
+.added__animation {
+	position: absolute;
+	top: 0;
+	left: 20px;
+	right: 0;
+	bottom: 0;
+	height: 38px;
+	width: 38px;
+	display: inline-block;
+	border: 2px solid #000000;
+	border-radius: 50%;
+	text-align: center;
+	opacity: 0;
+	-webkit-transform: scale(0.75) translateY(0px);
+	transform: scale(0.75) translateY(0px);
+	-webkit-transition: opacity 0.2s ease, -webkit-transform 0.6s cubic-bezier(0.18, 1.22, 0.61, 1.38);
+	transition: opacity 0.2s ease, -webkit-transform 0.6s cubic-bezier(0.18, 1.22, 0.61, 1.38);
+	transition: opacity 0.2s ease, transform 0.6s cubic-bezier(0.18, 1.22, 0.61, 1.38);
+	transition: opacity 0.2s ease, transform 0.6s cubic-bezier(0.18, 1.22, 0.61, 1.38), -webkit-transform 0.6s cubic-bezier(0.18, 1.22, 0.61, 1.38);
+}
+
+.added__animation span {
+	color: #000000;
+	display: inline-block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	height: 15px;
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	font-size: 14px;
+	line-height: 1em;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+}
+
+.added__animation.clicked {
+	opacity: 1;
+	z-index: 2;
+	-webkit-transform: scale(1) translateY(100px);
+	transform: scale(1) translateY(100px);
+}
+
+
+/*animated ends*/
+
+
+/* nav pills*/
+
+/*
+admin style*/
+
+.button-wrapper .btn {
+	margin: 20px 0px;
+}
+
+.button-wrapper {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-around;
+}
+
+a.btn>span.glyphicon {
+	margin-left: 12px;
+}
+
+.updateButton {
+	top: 30%;
+	left: 30%;
+	border: 2px solid #000;
+	padding: 5px 20px;
+	text-align: center;
+	color: #000;
+	font-weight: bold;
+	transition: opacity 0.35s ease;
+}
+
+.updateButton:hover {
+	color: #000;
+	text-decoration: none;
+}
+
+
+/*admin style ends
+*/
+
+.grievanceId {
+	pointer-events: none;
+	opacity: 0.5;
+}
